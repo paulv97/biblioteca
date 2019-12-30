@@ -5,14 +5,9 @@
  */
 package main;
 
-import datos.Conexion;
-import datos.DAOException;
-import datos.EditorialDAO;
-import datos.UsuarioDAO;
+import datos.*;
 import java.util.ArrayList;
-import negocio.Editorial;
-import negocio.Usuario;
-
+import negocio.*;
 /**
  *
  * @author Jose
@@ -25,6 +20,7 @@ public class Main {
     public static void main(String[] args) throws DAOException {
         UsuarioDAO udao = new UsuarioDAO();
         EditorialDAO edao = new EditorialDAO();
+        AutorDAO autorDao = new AutorDAO();
         //udao.insert(new Usuario(1, "Pepe"));
         //udao.delete(new Usuario(6, "Peperoni"));
         //udao.insert(new Usuario(7, "Peperoni"));
@@ -38,7 +34,7 @@ public class Main {
         //}
         
         //edao.insert(new Editorial(1, "LNS"));
-        edao.delete(new Editorial(2, ""));
+        //edao.delete(new Editorial(2, ""));
         //edao.update(new Editorial(1, "Editorial LNS"));
         //Editorial editorial = edao.get(2);
         //System.out.println(editorial.toString());
@@ -48,6 +44,10 @@ public class Main {
          //   System.out.println(lista.get(i).toString());
         //}
         
+        ArrayList<Autor> autores = (ArrayList<Autor>) autorDao.getAll();
+        autores.forEach(autor -> {
+            System.out.println(autor.toString());
+        });
         
     }
     
